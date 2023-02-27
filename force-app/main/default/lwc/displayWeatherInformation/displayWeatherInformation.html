@@ -1,0 +1,116 @@
+<template>
+    <!-- loader -->
+    <div if:true={showSpinner}>
+        <lightning-spinner
+            alternative-text="Loading..." variant="brand">
+        </lightning-spinner>
+    </div>
+    <!------------->
+ 
+  
+ 
+    <lightning-card title="City Info to Fetch Weather" icon-name="standard:address">
+        <div class="slds-var-p-around_small">
+            <lightning-layout multiple-rows>
+                <lightning-layout-item padding="around-small" size="12" medium-device-size="12" large-device-size="12">
+                    
+                    <lightning-input name="Latitude" class="fieldvalidate" type="number"
+                                     label="Latitudee" min="1000" max="999999" step="10" 
+                                      required>
+                    </lightning-input>
+
+                    <lightning-input name="Longitude" class="fieldvalidate" type="number"
+                                     label="Longitude" min="1000" max="999999" step="10" 
+                                     required>
+                    </lightning-input>
+                </lightning-layout-item>
+                <lightning-layout-item size="12" class="slds-var-p-top_small">
+                    <lightning-button class="slds-align_absolute-center" variant="brand" label="Submit"
+                        onclick={handleValidation}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card><br/>
+    <lightning-card title="City Weather Info" icon-name="utility:salesforce1">
+        <div class="slds-var-p-around_small">
+            <div class="slds-p-horizontal_small">
+                <div class="slds-form" role="list">
+                    <div class="slds-form__row">
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">City Name</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.name}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">City Temperature</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.temp} celsius
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="slds-form__row">
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">Sunrise</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.sunrise}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">Sunset</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.sunset}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+                    <div class="slds-form__row">
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">Pressure</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.pressure}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-form__item" role="listitem">
+                            <div
+                                class="slds-form-element slds-form-element_edit slds-form-element_readonly slds-form-element_stacked slds-hint-parent">
+                                <span class="slds-form-element__label">Humidity</span>
+                                <div class="slds-form-element__control">
+                                    <div class="slds-form-element__static">
+                                        {result.humidity}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>

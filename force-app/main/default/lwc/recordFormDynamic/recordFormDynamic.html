@@ -1,0 +1,28 @@
+<template>
+  
+    <lightning-card if:true={boolVisible}>
+        <h1 slot="title">
+            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+            Record Form
+        </h1>
+         <div class="slds-m-around_medium">
+            {publisherMessage}
+        </div>
+        
+           <div>
+        <!-- fields={fields} -->
+        <lightning-record-form
+               
+                object-api-name= {publisherMessage}
+                layout-type="Full"
+                columns="2"
+                mode={modeName}
+                onsubmit={handleSubmit}
+                onsuccess={handleSuccess} class="slds-p-around_medium">
+        </lightning-record-form>
+       
+      </div>
+
+    </lightning-card>
+    
+</template>
